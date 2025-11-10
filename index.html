@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexa Wave 6G Technology Dashboard</title>
+    <link rel="stylesheet" href="6.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon pulse">
+                    <span>6G</span>
+                </div>
+                <div class="logo-text">Hexa Wave</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="dashboard">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-section="network">Network</a></li>
+                    <li><a href="#" class="nav-link" data-section="performance">Performance</a></li>
+                    <li><a href="#" class="nav-link" data-section="security">Security</a></li>
+                    <li><a href="#" class="nav-link" data-section="analytics">Analytics</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Connection Status</h3>
+                        <div class="card-icon">📶</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Network Type</span>
+                            <span class="stat-value">6G Advanced</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Signal Quality</span>
+                            <span class="stat-value">Excellent</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Latency</span>
+                            <span class="stat-value">&lt; 1ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Uptime</span>
+                            <span class="stat-value">99.98%</span>
+                        </div>
+                        <div class="connection-status">
+                            <div class="connection-dot" id="connectionStatus"></div>
+                            <span id="connectionText">Connected to 6G Network</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Data Throughput</h3>
+                        <div class="card-icon">🚀</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Download Speed</span>
+                            <span class="stat-value" id="downloadSpeed">12.4 Gbps</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="downloadProgress" style="width: 95%"></div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Upload Speed</span>
+                            <span class="stat-value" id="uploadSpeed">8.7 Gbps</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="uploadProgress" style="width: 87%"></div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Data Usage</span>
+                            <span class="stat-value" id="dataUsage">1.2 TB</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="dataUsageProgress" style="width: 60%"></div>
+                        </div>
+                        <div class="data-source">Live data from network sensors</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Connected Devices</h3>
+                        <div class="card-icon">🔗</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Active Devices</span>
+                            <span class="stat-value" id="activeDevices">247</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="activeDevicesProgress" style="width: 82%"></div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">IoT Sensors</span>
+                            <span class="stat-value" id="iotSensors">1,842</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="iotSensorsProgress" style="width: 92%"></div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">AI Nodes</span>
+                            <span class="stat-value" id="aiNodes">56</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="aiNodesProgress" style="width: 75%"></div>
+                        </div>
+                        <div class="data-source">Updated every 5 seconds</div>
+                    </div>
+                </div>
+
+                <div class="card network-visualization">
+                    <div class="card-header">
+                        <h3 class="card-title">Network Visualization</h3>
+                        <div class="card-icon">🌐</div>
+                    </div>
+                    <canvas class="network-canvas" id="networkCanvas"></canvas>
+                </div>
+
+                <div class="card signal-strength">
+                    <div class="card-header">
+                        <h3 class="card-title">Signal Strength</h3>
+                        <div class="card-icon">📡</div>
+                    </div>
+                    <div class="signal-bar">
+                        <span class="signal-label">Main Tower</span>
+                        <div class="signal-visual">
+                            <div class="signal-level" id="signal1"></div>
+                        </div>
+                        <span class="stat-value">-42 dBm</span>
+                    </div>
+                    <div class="signal-bar">
+                        <span class="signal-label">Satellite Link</span>
+                        <div class="signal-visual">
+                            <div class="signal-level" id="signal2"></div>
+                        </div>
+                        <span class="stat-value">-51 dBm</span>
+                    </div>
+                    <div class="signal-bar">
+                        <span class="signal-label">Edge Node</span>
+                        <div class="signal-visual">
+                            <div class="signal-level" id="signal3"></div>
+                        </div>
+                        <span class="stat-value">-38 dBm</span>
+                    </div>
+                    <div class="signal-bar">
+                        <span class="signal-label">Backup Link</span>
+                        <div class="signal-visual">
+                            <div class="signal-level" id="signal4"></div>
+                        </div>
+                        <span class="stat-value">-47 dBm</span>
+                    </div>
+                </div>
+
+                <div class="tech-features">
+                    <div class="feature">
+                        <div class="feature-icon">AI</div>
+                        <h4 class="feature-title">AI-Optimized Routing</h4>
+                        <p class="feature-desc">Intelligent path selection using machine learning algorithms for optimal
+                            data transmission.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">THz</div>
+                        <h4 class="feature-title">Terahertz Frequencies</h4>
+                        <p class="feature-desc">Utilizing 0.1-10 THz spectrum for ultra-high capacity and minimal
+                            latency.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">Holo</div>
+                        <h4 class="feature-title">Holographic Beamforming</h4>
+                        <p class="feature-desc">Advanced antenna systems creating dynamic 3D signal patterns for precise
+                            targeting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Section -->
+        <section id="network" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Network Topology</h3>
+                    <div class="card-icon">🛰️</div>
+                </div>
+                <div class="network-grid">
+                    <div class="card">
+                        <canvas class="topology-canvas" id="topologyCanvas"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Connected Nodes</h3>
+                        <div class="node-list" id="nodeList">
+                            <!-- Nodes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Network Performance</h3>
+                    <div class="card-icon">📊</div>
+                </div>
+                <div class="performance-grid">
+                    <div class="card">
+                        <canvas class="performance-chart" id="performanceChart"></canvas>
+                    </div>
+                    <div class="performance-metrics">
+                        <div class="metric-card">
+                            <div class="card-title">Peak Throughput</div>
+                            <div class="metric-value" id="peakThroughput">15.2 Gbps</div>
+                            <div class="metric-label">Achieved at 14:32 UTC</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="card-title">Average Latency</div>
+                            <div class="metric-value" id="avgLatency">0.7 ms</div>
+                            <div class="metric-label">Across all connections</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="card-title">Packet Loss</div>
+                            <div class="metric-value" id="packetLoss">0.01%</div>
+                            <div class="metric-label">Within acceptable limits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="security" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Security Dashboard</h3>
+                    <div class="card-icon">🔒</div>
+                </div>
+                <div class="security-grid">
+                    <div class="card threat-level">
+                        <h3 class="card-title">Threat Level</h3>
+                        <div class="threat-gauge">
+                            <canvas id="threatGauge"></canvas>
+                        </div>
+                        <div class="threat-value" id="threatValue">LOW</div>
+                        <div class="threat-status" id="threatStatus">All Systems Secure</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Security Events</h3>
+                        <div class="security-events" id="securityEvents">
+                            <!-- Security events will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Data Analytics</h3>
+                    <div class="card-icon">📈</div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="card data-flow">
+                        <canvas class="data-flow-canvas" id="dataFlowCanvas"></canvas>
+                    </div>
+                    <div class="analytics-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="dataProcessed">24.7 PB</div>
+                                <div class="stat-text">Data Processed Today</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="aiDecisions">1.2M</div>
+                                <div class="stat-text">AI Decisions Made</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔍</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="predictiveAccuracy">98.7%</div>
+                                <div class="stat-text">Predictive Accuracy</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🌍</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="countriesConnected">184</div>
+                                <div class="stat-text">Countries Connected</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Hexa Wave 6G Technology Dashboard | Advanced Network Management System</p>
+        </footer>
+    </div>
+
+    <script src="6.js"></script>
+
+</body>
+
+</html>
